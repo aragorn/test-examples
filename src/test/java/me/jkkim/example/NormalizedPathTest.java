@@ -66,6 +66,7 @@ public class NormalizedPathTest {
         assertThat(solve0(" . ")).isEqualTo(" . ");
         assertThat(solve0(".")).isEqualTo("");
         assertThat(solve0("/home/user/../../../../../../../tmp/david")).isEqualTo("/tmp/david");
+        assertThat(solve0("/home/user/../../../../../../../")).isEqualTo("/");
         assertThat(solve0("path/to/file/../../../")).isEqualTo("");
     }
 
@@ -76,6 +77,7 @@ public class NormalizedPathTest {
         assertThat(solve(" . ")).isEqualTo(" . ");
         assertThat(solve(".")).isEqualTo("");
         assertThat(solve("/home/user/../../../../../../../tmp/david")).isEqualTo("/tmp/david");
+        assertThat(solve("/home/user/../../../../../../../")).isEqualTo("/");
         assertThat(solve("path/to/file/../../../")).isEqualTo("");
     }
 
