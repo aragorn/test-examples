@@ -3,6 +3,7 @@ package me.jkkim.example;
 import org.junit.Test;
 
 import static me.jkkim.example.NormalizedPath.solve;
+import static me.jkkim.example.NormalizedPath.solve0;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class NormalizedPathTest {
@@ -59,8 +60,20 @@ public class NormalizedPathTest {
     }
 
     @Test
+    public void testCase4_usingSystemPathNormalize() {
+        assertThat(solve0("\t\n")).isEqualTo("\t\n");
+        assertThat(solve0(" a ")).isEqualTo(" a ");
+        assertThat(solve0(" . ")).isEqualTo(" . ");
+        assertThat(solve0(".")).isEqualTo("");
+        assertThat(solve0("/home/user/../../../../../../../tmp/david")).isEqualTo("/tmp/david");
+        assertThat(solve0("path/to/file/../../../")).isEqualTo("");
+    }
+
+    @Test
     public void testCase4() {
-        assertThat(solve("")).isEqualTo("");
+        assertThat(solve("\t\n")).isEqualTo("\t\n");
+        assertThat(solve(" a ")).isEqualTo(" a ");
+        assertThat(solve(" . ")).isEqualTo(" . ");
         assertThat(solve(".")).isEqualTo("");
         assertThat(solve("/home/user/../../../../../../../tmp/david")).isEqualTo("/tmp/david");
         assertThat(solve("path/to/file/../../../")).isEqualTo("");
